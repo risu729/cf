@@ -336,7 +336,7 @@ describe("cf dev", () => {
 			});
 
 			await expect(runCf(["dev", "--mode", "staging"])).rejects.toThrow(
-				"The detected command `npx ng serve` does not currently support `--mode`."
+				"The detected command `ng serve` does not currently support `--mode`."
 			);
 		});
 
@@ -382,7 +382,7 @@ describe("cf dev", () => {
 				const result = await runCf(["dev"]);
 
 				expect(result.exitCode).toBe(0);
-				expect(logMessage).toHaveBeenCalledWith("Delegating to npx vite", {
+				expect(logMessage).toHaveBeenCalledWith("Delegating to vite", {
 					output: process.stderr,
 					spacing: 0,
 				});
@@ -427,6 +427,28 @@ describe("cf dev", () => {
 				process.env.PATH,
 				"override",
 			]);
+		});
+
+		it("resolves framework executables from an ancestor's node_modules", async () => {
+			await seed({
+				"node_modules/.bin/cf-local-framework": nodeScript(
+					'require("node:fs").writeFileSync("command.out", process.argv.slice(2).join("\\n"));'
+				),
+				"packages/app/package.json": "{}",
+			});
+			makeExecutable("node_modules/.bin/cf-local-framework", { npmBin: true });
+			const cwd = resolve("packages/app");
+
+			expect(
+				await runProjectCommand("cf-local-framework build", cwd, {
+					preferLocal: true,
+					args: ["--mode", "staging"],
+					output: "silent",
+				})
+			).toEqual({ exitCode: 0 });
+			expect(readFileSync(resolve(cwd, "command.out"), "utf8")).toBe(
+				"build\n--mode\nstaging"
+			);
 		});
 
 		it("propagates non-zero project command exits", async () => {
@@ -559,7 +581,7 @@ describe("cf dev", () => {
 			});
 
 			await expect(runCf(["dev", "--port", "3000"])).rejects.toThrow(
-				"Arguments cannot currently be forwarded to the detected dev command `npx astro dev`"
+				"Arguments cannot currently be forwarded to the detected dev command `astro dev`"
 			);
 		});
 

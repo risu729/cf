@@ -80,6 +80,7 @@ const devCommand: CommandModule<CommonYargsOptions, DevArgs> = {
 				);
 			}
 			const result = await runProjectCommand(details.devCommand, cwd, {
+				preferLocal: true,
 				env: details.env,
 				args: modeArgs,
 				output: "inherit",
