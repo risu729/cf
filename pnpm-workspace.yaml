@@ -31,6 +31,10 @@ allowBuilds:
 
 gitChecks: false
 catalog:
+  # IMPORTANT: The autoconfig pkg.pr.new below is the prerelease of https://github.com/cloudflare/workers-sdk/pull/16787.
+  #            This is here only so that reviewers can manually test the changes if they want to, this needs to be removed
+  #            before landing this changes to `main`
+  "@cloudflare/autoconfig": https://pkg.pr.new/@cloudflare/autoconfig@16787
   vite: npm:@voidzero-dev/vite-plus-core@1.4.0
   vite-plus: 1.4.0
 overrides:
