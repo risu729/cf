@@ -282,8 +282,8 @@ importers:
         specifier: ^1.8.1
         version: 1.8.1
       '@cloudflare/autoconfig':
-        specifier: https://pkg.pr.new/cloudflare/workers-sdk/@cloudflare/autoconfig@4415eda181163b70b2759fc3dfa29008ff2b5c77
-        version: https://pkg.pr.new/cloudflare/workers-sdk/@cloudflare/autoconfig@4415eda181163b70b2759fc3dfa29008ff2b5c77(vitest@5.1.0)
+        specifier: https://pkg.pr.new/cloudflare/workers-sdk/@cloudflare/autoconfig@58e2aa9fde70c2f650e5ab0f94594936125d7777
+        version: https://pkg.pr.new/cloudflare/workers-sdk/@cloudflare/autoconfig@58e2aa9fde70c2f650e5ab0f94594936125d7777(vitest@5.1.0)
       '@cloudflare/cli-shared-helpers':
         specifier: 0.3.4
         version: 0.3.4(vitest@5.1.0)
@@ -697,8 +697,8 @@ packages:
     resolution: {integrity: sha512-dlT1m5e/0yUL0kRNcQn7yGLVThkgbB0Ga/1AmfDDC/8ik6AIiSf2QLQO2zPYvefsHP0aFgxO93cVLCCfDp7kzQ==}
     engines: {node: '>= 20.12.0'}
 
-  '@cloudflare/autoconfig@https://pkg.pr.new/cloudflare/workers-sdk/@cloudflare/autoconfig@4415eda181163b70b2759fc3dfa29008ff2b5c77':
-    resolution: {integrity: sha512-FLZ+LAbrVPDwRqVgQibl5nikOY7yZqPLlGVPbz+q5GcJzXy1oISiaBb/sArXLVPfVkD9vWhX/ZPaQpiMN2GUXQ==, tarball: https://pkg.pr.new/cloudflare/workers-sdk/@cloudflare/autoconfig@4415eda181163b70b2759fc3dfa29008ff2b5c77}
+  '@cloudflare/autoconfig@https://pkg.pr.new/cloudflare/workers-sdk/@cloudflare/autoconfig@58e2aa9fde70c2f650e5ab0f94594936125d7777':
+    resolution: {integrity: sha512-OQM9rkejABfhFh4Xgj3+UGvakIG9ZaezcS68iaxoaL/vjfXYp3MGui8m78EuECh0V320noqXjyCmXa2r5Pjckg==, tarball: https://pkg.pr.new/cloudflare/workers-sdk/@cloudflare/autoconfig@58e2aa9fde70c2f650e5ab0f94594936125d7777}
     version: 0.10.0
 
   '@cloudflare/build-output-utils@0.9.10':
@@ -4226,7 +4226,7 @@ snapshots:
       fast-wrap-ansi: 0.2.2
       sisteransi: 1.0.5
 
-  '@cloudflare/autoconfig@https://pkg.pr.new/cloudflare/workers-sdk/@cloudflare/autoconfig@4415eda181163b70b2759fc3dfa29008ff2b5c77(vitest@5.1.0)':
+  '@cloudflare/autoconfig@https://pkg.pr.new/cloudflare/workers-sdk/@cloudflare/autoconfig@58e2aa9fde70c2f650e5ab0f94594936125d7777(vitest@5.1.0)':
     dependencies:
       '@cloudflare/cli-shared-helpers': 0.3.4(vitest@5.1.0)
       '@cloudflare/config': 0.30.2
