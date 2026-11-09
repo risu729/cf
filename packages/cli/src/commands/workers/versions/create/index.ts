@@ -1,4 +1,5 @@
 import { withTelemetry } from "../../../../lib/telemetry/index.js";
+import { log } from "../../../../lib/ui/log.js";
 import { runUpload, sharedUploadBuilder } from "../../../deploy/shared.js";
 import {
 	prepareStaticAssetsBuildOutput,
@@ -13,6 +14,13 @@ function builder(yargs: Argv<CommonYargsOptions>) {
 		.hide("local")
 		.hide("persist-to")
 		.epilogue("Local simulation (--local) is not supported by this command.")
+		.option("force", {
+			type: "boolean",
+			alias: "f",
+			description:
+				"Allow upload in CI despite conflicting remote Worker changes",
+			default: false,
+		})
 		.option("preview-alias", {
 			type: "string",
 			description: "Preview alias for this Worker Version",
@@ -33,6 +41,12 @@ const versionsCreateCommand: CommandModule<
 		if (argv.local) {
 			throw new Error(
 				"--local is not supported by cf workers versions create."
+			);
+		}
+
+		if (argv.force && !argv["dry-run"]) {
+			log.warn(
+				"Using --force may overwrite conflicting remote Worker changes."
 			);
 		}
 

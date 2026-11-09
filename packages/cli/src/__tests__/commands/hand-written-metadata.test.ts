@@ -132,17 +132,20 @@ describe("hand-written command metadata", () => {
 		});
 	});
 
-	it("publishes the deploy force flag and its short alias", () => {
-		expect(commands.get("cf deploy")?.options).toContainEqual({
-			name: "force",
-			alias: "f",
-			type: "boolean",
-			required: false,
-			description:
-				"Allow upload in CI despite conflicting remote Worker changes",
-			default: false,
-		});
-	});
+	it.each(["cf deploy", "cf workers versions create"])(
+		"publishes the %s force flag and its short alias",
+		(command) => {
+			expect(commands.get(command)?.options).toContainEqual({
+				name: "force",
+				alias: "f",
+				type: "boolean",
+				required: false,
+				description:
+					"Allow upload in CI despite conflicting remote Worker changes",
+				default: false,
+			});
+		}
+	);
 
 	it("publishes Preview name as an optional flag", () => {
 		const command = commands.get("cf previews deploy");

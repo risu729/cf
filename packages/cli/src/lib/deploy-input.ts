@@ -129,13 +129,15 @@ export function createVersionsUploadProps(
 	worker: BuildOutputWorker,
 	config: Config,
 	accountId: string | undefined,
-	argv: SharedUploadArgs & { "preview-alias"?: string },
+	argv: SharedUploadArgs & { "preview-alias"?: string; force?: boolean },
 	containers: ContainerDeployConfig
 ): VersionsUploadProps {
 	return {
 		...createSharedProps(worker, config, accountId, argv, containers),
 		command: "versions upload",
-		strict: true,
+		strict: !argv.force,
+		strictModeAbortMessage:
+			"Aborting the upload operation because of conflicts. Rerun with `cf workers versions create --force` to override and upload anyway.",
 		previewAlias: argv["preview-alias"],
 	};
 }

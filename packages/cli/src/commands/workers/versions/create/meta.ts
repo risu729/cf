@@ -20,6 +20,15 @@ export default {
 	],
 	options: [
 		{
+			name: "force",
+			alias: "f",
+			type: "boolean",
+			required: false,
+			description:
+				"Allow upload in CI despite conflicting remote Worker changes",
+			default: false,
+		},
+		{
 			name: "prebuilt",
 			type: "boolean",
 			required: false,
